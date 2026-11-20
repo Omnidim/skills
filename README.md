@@ -12,7 +12,7 @@ Skills that teach an AI agent to build and run [OmniDimension](https://omnidim.i
 
 ## Tips from real calls
 
-[What the best agents do](omnidim-build-agent/references/call-tips.md), measured on answered calls across 96 accounts. The biggest one: open with a name check of 8 words or fewer, like "Hi, am I speaking with [name]?". Outbound agents that do lose 31% of answered calls in the first 15 seconds, against 46 to 49% for greetings of 16 words or more.
+[What the best agents do](omnidim-build-agent/references/call-tips.md), from answered calls of 200 agents in 86 accounts. The biggest one, for outbound calls: open with a name check of 8 words or fewer, like "Hi, am I speaking with [name]?". The median agent with a greeting that short lost 31% of its answered calls in the first 15 seconds, against 46 to 49% for greetings of 16 words or more.
 
 ## Install
 

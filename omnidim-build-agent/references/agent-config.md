@@ -47,4 +47,4 @@ wrapper; see the routing guide). The fields:
 }
 
 Then give the agent a phone number and verify with a test call (the
-`provision_agent` prompt walks through this end to end).
+the omnidim-build-agent skill walks through this end to end).

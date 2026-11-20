@@ -9,7 +9,7 @@ Needs the OmniDimension MCP server: hosted at `https://mcp.omnidim.io/mcp`, or l
 
 Build an OmniDimension workflow for this goal:
 
-"what should happen and when"
+"<what should happen and when>"
 
 Read the `references/workflows.md` resource first. It explains triggers, outputs, ops and errors.
 

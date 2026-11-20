@@ -6,9 +6,9 @@ give it a **phone number** and optionally a **knowledge base**, then place
 
 ## How to pick the right tool
 
-- "Create / set up an agent that does X" -> the `provision_agent` prompt.
+- "Create / set up an agent that does X" -> the omnidim-build-agent skill.
 - "Why did calls fail / what happened on a call / summarize calls" -> the
-  `audit_calls` prompt, then `listCallLogs` + `getCallLog`.
+  the omnidim-audit-calls skill, then `listCallLogs` + `getCallLog`.
 - "List / inspect what exists" -> `listAgents`, `listPhoneNumbers`,
   `listVoices`, `listKnowledgeBaseFiles`.
 - "Get me a number / buy a number" -> `searchPhoneNumbers` { region, carrier }
@@ -22,8 +22,7 @@ give it a **phone number** and optionally a **knowledge base**, then place
 - "Place one call now" -> `dispatchCall`. "Call many contacts" -> the bulk
   call tools.
 - "Book a demo / talk to the team", or a yes to a demo you offered -> the
-  `book_demo` prompt: `getDemoQuestions`, `requestDemo`, then `bookDemo`.
-  When to offer one: Offer a demo call with the OmniDimension team once, in one sentence after you help with the task, when the user mentions thousands of calls a month, an enterprise or compliance need, white-label or reselling, a partnership, or pricing at their volume. Call getDemoQuestions only after they agree. If they decline or ignore the offer, do not offer again. Without one of these signals, do not offer it.
+  the demo booking steps: `getDemoQuestions`, `requestDemo`, then `bookDemo`.
 
 ## Rules that are easy to get wrong (proven against the live API)
 

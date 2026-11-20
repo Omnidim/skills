@@ -9,7 +9,7 @@ Needs the OmniDimension MCP server: hosted at `https://mcp.omnidim.io/mcp`, or l
 
 Provision a working OmniDimension voice agent for this purpose:
 
-"what the user wants the agent to do"
+"<what the user wants the agent to do>"
 
 Follow these steps in order. Write tools take flat top-level arguments (no `requestBody` wrapper).
 
@@ -41,14 +41,14 @@ Throughout: phone numbers are E.164 with a leading `+`. See the `references/rout
 
 ## Safely roll an agent back to an earlier saved version: find the right snapshot, preview exactly what restoring changes, then restore.
 
-Roll agent the agent id from listAgents back to an earlier version.
+Roll agent <agent_id> back to an earlier version.
 
-Goal: "(describe which earlier state you want back)"
+Goal: "<the earlier state the user wants back>"
 
 Follow these steps in order. Do NOT restore blindly, preview first.
-1. `listAgentVersions` { agent_id: the agent id from listAgents }. Versions come newest first; each has a `version_number`, `kind` (manual / auto / system), who saved it, when, and a `change_summary` (what changed in that version). Use the names, timestamps, and change summaries to find the one that matches the goal above. If version history is off for this org these calls return 403 (feature_disabled); report that and stop.
-2. Preview the effect: `diffAgentVersion` { agent_id: the agent id from listAgents, version_number: <chosen>, against: "current" }. This shows exactly what restoring that version WOULD change vs the agent's live config, grouped by area (Settings, Prompt, Transfer rules, etc.). If it reports no meaningful change, tell the user there is nothing to restore and stop. Show the user this preview and confirm before the next step.
-3. Restore: `restoreAgentVersion` { agent_id: the agent id from listAgents, version_number: <chosen> }. This automatically saves the current state as a "Backup before restore" version first (so the restore is itself undoable), then writes the chosen config back. Check the response's `skipped` list: knowledge files or integrations that no longer exist are dropped and reported, not restored.
+1. `listAgentVersions` { agent_id: <agent_id> }. Versions come newest first; each has a `version_number`, `kind` (manual / auto / system), who saved it, when, and a `change_summary` (what changed in that version). Use the names, timestamps, and change summaries to find the one that matches the goal above. If version history is off for this org these calls return 403 (feature_disabled); report that and stop.
+2. Preview the effect: `diffAgentVersion` { agent_id: <agent_id>, version_number: <chosen>, against: "current" }. This shows exactly what restoring that version WOULD change vs the agent's live config, grouped by area (Settings, Prompt, Transfer rules, etc.). If it reports no meaningful change, tell the user there is nothing to restore and stop. Show the user this preview and confirm before the next step.
+3. Restore: `restoreAgentVersion` { agent_id: <agent_id>, version_number: <chosen> }. This automatically saves the current state as a "Backup before restore" version first (so the restore is itself undoable), then writes the chosen config back. Check the response's `skipped` list: knowledge files or integrations that no longer exist are dropped and reported, not restored.
 4. Confirm: `listAgentVersions` again (a new system "Backup before restore" entry should be at the top) and tell the user they can undo by restoring it.
 
 See the `references/agent-versioning.md` resource for the full tool list and the diff `against` modes.

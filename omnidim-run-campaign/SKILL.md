@@ -9,7 +9,7 @@ Needs the OmniDimension MCP server: hosted at `https://mcp.omnidim.io/mcp`, or l
 
 Set up and launch an OmniDimension bulk-call campaign for this goal:
 
-"who to call and why"
+"<who to call and why>"
 
 Follow these steps in order. Write tools take flat top-level arguments (no `requestBody` wrapper).
 A campaign dials real people and spends real money: confirm the plan with the user before
