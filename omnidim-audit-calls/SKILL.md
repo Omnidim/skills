@@ -1,9 +1,9 @@
 ---
-name: audit-calls
+name: omnidim-audit-calls
 description: "Review OmniDimension call logs: find failed calls, read transcripts and sentiment, and summarize an agent or a campaign. Use when the user asks how calls went or why calls fail."
 ---
 
-Needs the OmniDimension MCP server: hosted at `https://mcp.omnidim.io/mcp`, or local with `npx -y @omnidim-ai/mcp-server` (see the connect-omnidim skill). If a field, error or feature is unclear, call `searchDocs` before guessing.
+Needs the OmniDimension MCP server: hosted at `https://mcp.omnidim.io/mcp`, or local with `npx -y @omnidim-ai/mcp-server` (see the omnidim-connect skill). If a field, error or feature is unclear, call `searchDocs` before guessing.
 
 ## Review and summarize call logs: find failures, inspect transcripts and sentiment, or audit a specific agent or campaign.
 

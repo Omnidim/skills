@@ -1,9 +1,9 @@
 ---
-name: run-outbound-campaign
+name: omnidim-run-campaign
 description: "Set up and launch an OmniDimension bulk-call campaign: draft it, add contacts in batches, size concurrency, check calling hours, then start and watch it. Use when the user wants to call a list of people."
 ---
 
-Needs the OmniDimension MCP server: hosted at `https://mcp.omnidim.io/mcp`, or local with `npx -y @omnidim-ai/mcp-server` (see the connect-omnidim skill). If a field, error or feature is unclear, call `searchDocs` before guessing.
+Needs the OmniDimension MCP server: hosted at `https://mcp.omnidim.io/mcp`, or local with `npx -y @omnidim-ai/mcp-server` (see the omnidim-connect skill). If a field, error or feature is unclear, call `searchDocs` before guessing.
 
 ## Set up and launch a bulk-call campaign safely: draft it, batch the contacts in, size concurrency from the numbers, check calling hours, then start and watch it.
 
@@ -28,15 +28,20 @@ A campaign dials real people and spends real money: confirm the plan with the us
 5. Add contacts with `addBulkCallContacts` in batches of up to 1000:
    { bulk_call_id, contacts: [{ to_number: "+1...", custom_variables: {...} }] }.
    This shape differs from create's contact_list on purpose; do not mix them. Report anything
-   that comes back in `rejected` with its row index.
+   that comes back in `rejected` with its row index. Each `custom_variables` key fills the
+   matching [placeholder] in the agent's greeting and prompt, so every row needs every key the
+   agent uses, or the agent says the placeholder out loud.
 6. Calling hours: if the goal names a time window, set it with `setBulkCallDailyTimeControl`
    (both the stop and start blocks are required) and pass `daily_stop_timezone`/
    `daily_start_timezone` for the customers' region; left out they fall back to the campaign's
    timezone, and a mismatch dials people at night. Also set the agent's own `timezone` field
    (`updateAgent`) so it works with the customers' local time on calls.
-7. Show the user the plan (campaign id, contact count, concurrency, window, rotation) and get
+7. Check the agent's greeting against the `references/call-tips.md` resource (a name check of
+   8 words or fewer loses far fewer calls in the first seconds). Suggest changes; never edit the
+   agent without the user's yes.
+8. Show the user the plan (campaign id, contact count, concurrency, window, rotation) and get
    their explicit go-ahead. Then `startBulkCall`.
-8. Watch it: `getBulkCallLiveStatus` for progress. When it finishes, read per-contact outcomes
+9. Watch it: `getBulkCallLiveStatus` for progress. When it finishes, read per-contact outcomes
    with `listBulkCallLines` (follow `next_cursor` until null) and offer `retryBulkCall` for
    contacts that did not connect.
 
@@ -45,4 +50,7 @@ See the `references/bulk-campaigns.md` resource for the full rules and failure m
 ## References
 
 - [bulk-campaigns](references/bulk-campaigns.md)
+- [call-tips](references/call-tips.md)
 - [carriers](references/carriers.md)
+- [recommended-stack](references/recommended-stack.md)
+- [voices](references/voices.md)

@@ -1,5 +1,5 @@
 ---
-name: connect-omnidim
+name: omnidim-connect
 description: "Connect an AI agent to an OmniDimension account through MCP, with the hosted server or a local one. Use when the OmniDimension tools are missing, a tool call fails with 401, or the user asks how to set OmniDimension up."
 ---
 

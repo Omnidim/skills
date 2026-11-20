@@ -36,7 +36,7 @@ wrapper; see the routing guide). The fields:
 
 {
   "name": "Appointment reminder",
-  "welcome_message": "Namaste, main aapke appointment ke baare mein baat karne ke liye call kar rahi hoon.",
+  "welcome_message": "Namaste, kya aap [name] bol rahe hain?",
   "context_breakdown": [
     { "title": "Role", "body": "You remind customers about an upcoming appointment and confirm whether they can attend. Speak naturally in the caller's language, Hindi or English." }
   ],

@@ -1,9 +1,9 @@
 ---
-name: build-agent
+name: omnidim-build-agent
 description: "Create an OmniDimension voice agent end to end: configure it, give it a phone number, test it with a real call, and roll it back to an earlier version if a change broke it. Use when the user wants a new voice agent, a bot for calls, or to undo agent changes."
 ---
 
-Needs the OmniDimension MCP server: hosted at `https://mcp.omnidim.io/mcp`, or local with `npx -y @omnidim-ai/mcp-server` (see the connect-omnidim skill). If a field, error or feature is unclear, call `searchDocs` before guessing.
+Needs the OmniDimension MCP server: hosted at `https://mcp.omnidim.io/mcp`, or local with `npx -y @omnidim-ai/mcp-server` (see the omnidim-connect skill). If a field, error or feature is unclear, call `searchDocs` before guessing.
 
 ## Create a working voice agent end to end: configure it, give it a number, and verify it can place a call and speak.
 
@@ -17,13 +17,15 @@ Follow these steps in order. Write tools take flat top-level arguments (no `requ
 2. Create the agent with `createAgent` (flat top-level fields):
    {
      "name": "<short name>",
-     "welcome_message": "<first line the agent speaks>",
+     "welcome_message": "<for outbound, a name check of 8 words or fewer, e.g. Hi, am I speaking with [name]?>",
      "context_breakdown": [ { "title": "Purpose", "body": "<the agent's instructions, derived from the purpose above>" } ],
      "call_type": "Outgoing",
      "model": { "model": "gpt-4.1-mini", "temperature": 0.5 },
      "voice": { "provider": "cartesia", "voice_id": "<voice id>" },
      "transcriber": { "provider": "soniox" }
    }
+   Before you write `welcome_message` and the instructions, read the
+   `references/call-tips.md` resource: it lists what the best agents do on real calls.
    Capture the returned `id` as agent_id. (`status` is always "Completed"; it is not a build signal.)
 3. Give it a number: `listPhoneNumbers` -> pick a number `id`. Attach it with
    `attachPhoneNumber` { phone_number_id, agent_id }. If no number exists,
@@ -55,6 +57,7 @@ See the `references/agent-versioning.md` resource for the full tool list and the
 
 - [agent-config](references/agent-config.md)
 - [agent-versioning](references/agent-versioning.md)
+- [call-tips](references/call-tips.md)
 - [carriers](references/carriers.md)
 - [recommended-stack](references/recommended-stack.md)
 - [routing](references/routing.md)

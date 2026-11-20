@@ -4,11 +4,15 @@ Skills that teach an AI agent to build and run [OmniDimension](https://omnidim.i
 
 | Skill | Use it to |
 |---|---|
-| [connect-omnidim](connect-omnidim/SKILL.md) | Connect an agent to your account, hosted or local |
-| [build-agent](build-agent/SKILL.md) | Create a voice agent, give it a number, test it, roll it back |
-| [build-workflow](build-workflow/SKILL.md) | Automate what happens after a call |
-| [run-outbound-campaign](run-outbound-campaign/SKILL.md) | Call a list of people safely |
-| [audit-calls](audit-calls/SKILL.md) | Find failed calls and summarize how calls went |
+| [omnidim-connect](omnidim-connect/SKILL.md) | Connect an agent to your account, hosted or local |
+| [omnidim-build-agent](omnidim-build-agent/SKILL.md) | Create a voice agent, give it a number, test it, roll it back |
+| [omnidim-run-campaign](omnidim-run-campaign/SKILL.md) | Call a list of people safely |
+| [omnidim-build-workflow](omnidim-build-workflow/SKILL.md) | Automate what happens after a call |
+| [omnidim-audit-calls](omnidim-audit-calls/SKILL.md) | Find failed calls and summarize how calls went |
+
+## Tips from real calls
+
+[What the best agents do](omnidim-build-agent/references/call-tips.md), measured on answered calls across 96 accounts. The biggest one: open with a name check of 8 words or fewer, like "Hi, am I speaking with [name]?". Outbound agents that do lose 31% of answered calls in the first 15 seconds, against 46 to 49% for greetings of 16 words or more.
 
 ## Install
 
@@ -16,13 +20,13 @@ Skills that teach an AI agent to build and run [OmniDimension](https://omnidim.i
 npx skills add Omnidim/skills
 ```
 
-Add `--skill build-agent` for one skill. For Claude Code, you can also copy a skill folder into `~/.claude/skills/`.
+Add `--skill omnidim-build-agent` for one skill. For Claude Code, you can also copy a skill folder into `~/.claude/skills/`.
 
-The skills need the MCP server connected. The `connect-omnidim` skill has the steps, or see the [MCP docs](https://docs.omnidim.io/docs/mcp).
+The skills need the MCP server connected. The `omnidim-connect` skill has the steps, or see the [MCP docs](https://docs.omnidim.io/docs/mcp).
 
 ## Where the text comes from
 
-The skills are the same steps the MCP server serves as prompts and guides, written out by `scripts/export_skills.py` in [omnidim-mcp-cloud](https://github.com/Omnidim/omnidim-mcp-cloud). Edit them there, not here, then regenerate.
+The skills are the same steps and guides the MCP server serves, written out by `scripts/export_skills.py` in [omnidim-mcp-cloud](https://github.com/Omnidim/omnidim-mcp-cloud). Edit them there, not here, then regenerate.
 
 ## License
 

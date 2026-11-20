@@ -1,9 +1,9 @@
 ---
-name: build-workflow
+name: omnidim-build-workflow
 description: "Build an OmniDimension automation workflow from a plain-language goal: pick the trigger and nodes, wire them, validate, test with consent, then publish. Use when the user wants something to happen automatically after a call or another event."
 ---
 
-Needs the OmniDimension MCP server: hosted at `https://mcp.omnidim.io/mcp`, or local with `npx -y @omnidim-ai/mcp-server` (see the connect-omnidim skill). If a field, error or feature is unclear, call `searchDocs` before guessing.
+Needs the OmniDimension MCP server: hosted at `https://mcp.omnidim.io/mcp`, or local with `npx -y @omnidim-ai/mcp-server` (see the omnidim-connect skill). If a field, error or feature is unclear, call `searchDocs` before guessing.
 
 ## Build an automation workflow from a plain-language goal: pick the trigger and nodes, wire them, validate, test with the user's consent, then publish.
 
