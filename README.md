@@ -6,13 +6,21 @@ Teach your AI agent to build OmniDimension voice agents, test them with a real c
 
 ## Install
 
-| Your agent | Run this | You get |
-|---|---|---|
-| Claude Code | `/plugin install omnidim --marketplace Omnidim/skills` | All five skills and the MCP server |
-| Codex, Cursor, Gemini CLI, Copilot, OpenCode and [more](https://github.com/vercel-labs/skills#readme) | `npx skills add Omnidim/skills --skill '*' -g -y` | All five skills |
-| Anything else | Copy the folders in [`skills/`](skills) into your agent's skills folder | All five skills |
+**Claude Code** gets all five skills and the MCP server in one step:
+
+```
+/plugin install omnidim --marketplace Omnidim/skills
+```
 
 On Claude Code before version 2.1.275, run `/plugin marketplace add Omnidim/skills`, then `/plugin install omnidim@omnidim`.
+
+**Codex, Cursor, Gemini CLI, Copilot, OpenCode** and [more](https://github.com/vercel-labs/skills#readme) get all five skills:
+
+```
+npx skills add Omnidim/skills --skill '*' -g -y
+```
+
+**Any other agent:** copy the folders in [`skills/`](skills) into its skills folder.
 
 The skills need the OmniDimension MCP server. The Claude Code plugin adds it for you: run `/mcp` once to sign in. For any other agent, ask it to "connect to OmniDimension" and the `omnidim-connect` skill walks it through. The [MCP docs](https://docs.omnidim.io/docs/mcp) have the steps for each client.
 
