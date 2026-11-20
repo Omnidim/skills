@@ -1,0 +1,25 @@
+{
+  "name": "omnidim",
+  "owner": { "name": "OmniDimension", "url": "https://omnidim.io" },
+  "description": "Skills that teach an AI agent to build, call with and review OmniDimension voice agents",
+  "plugins": [
+    {
+      "name": "omnidim",
+      "source": "./",
+      "strict": false,
+      "description": "All five OmniDimension skills, plus the hosted OmniDimension MCP server",
+      "homepage": "https://github.com/Omnidim/skills",
+      "license": "Apache-2.0",
+      "skills": [
+        "./skills/omnidim-connect",
+        "./skills/omnidim-build-agent",
+        "./skills/omnidim-run-campaign",
+        "./skills/omnidim-build-workflow",
+        "./skills/omnidim-audit-calls"
+      ],
+      "mcpServers": {
+        "omnidim": { "type": "http", "url": "https://mcp.omnidim.io/mcp" }
+      }
+    }
+  ]
+}
