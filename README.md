@@ -46,7 +46,6 @@ In the order you usually need them:
 skills/<skill>/SKILL.md       the steps your agent follows
 skills/<skill>/references/    the guides those steps link to
 .claude-plugin/               the Claude Code plugin: the five skills plus the MCP server
-assets/                       the picture above
 ```
 
 ## Where the text comes from
