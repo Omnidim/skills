@@ -1,8 +1,6 @@
 # OmniDimension skills
 
-Teach your AI agent to build OmniDimension voice agents, test them with a real call, run calling campaigns and review how the calls went.
-
-Your AI agent connects to OmniDimension, builds a voice agent, places a test call, runs a campaign and audits the calls. A workflow handles what happens after each call.
+Teach your AI agent to build OmniDimension voice agents, test them with a real call, run calling campaigns, automate what happens after each call, and review how the calls went.
 
 ## Install
 
