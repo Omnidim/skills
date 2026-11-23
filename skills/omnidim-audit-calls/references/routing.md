@@ -37,9 +37,14 @@ give it a **phone number** and optionally a **knowledge base**, then place
 3. **The agent's numeric `voice` field is not used for speech.** It can read
    back as `false` on an API-created agent; that is normal. The call handler
    uses `voice_external_id` + `voice_provider`.
-4. **Use the platform defaults:** transcriber `soniox`, a `cartesia` voice,
-   model `gpt-4.1-mini`. Pick another provider only when
-   the user names one.
+4. **Use the platform defaults:** transcriber `soniox`, one of the
+   OmniDimension voices, model `gpt-4.1-mini`. Pick another provider only when
+   the user names one. OmniDimension voices are our most recommended voices:
+   picked by our team for each language and tested on real calls. List them
+   with `listVoices` `provider=featured`, best first, and save one as
+   `voice.provider` = its `service` (`cartesia`) with its `name` as
+   `voice_id`. A Cartesia `search` does not find them. If none fits the
+   language or tone, pick another `cartesia` voice.
 5. **`dispatchCall` returning `success: true` does NOT mean a call
    connected.** It means the request was accepted. Proof of a real call is a
    resulting entry in `listCallLogs` whose `getCallLog` shows a non-empty
