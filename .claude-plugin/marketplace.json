@@ -16,7 +16,7 @@
         "./skills/omnidim-run-campaign",
         "./skills/omnidim-build-workflow",
         "./skills/omnidim-audit-calls",
-        "./skills/omnidim-client-onboarding"
+        "./skills/omnidim-onboard-client"
       ],
       "mcpServers": {
         "omnidim": { "type": "http", "url": "https://mcp.omnidim.io/mcp" }

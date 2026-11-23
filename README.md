@@ -33,7 +33,7 @@ In the order you usually need them:
 | [omnidim-run-campaign](skills/omnidim-run-campaign/SKILL.md) | "Call these 500 leads about the webinar" | Drafts the campaign, adds contacts, checks calling hours and concurrency, then starts it |
 | [omnidim-build-workflow](skills/omnidim-build-workflow/SKILL.md) | "After each call, send hot leads to Slack" | Builds, tests and publishes the automation |
 | [omnidim-audit-calls](skills/omnidim-audit-calls/SKILL.md) | "Why did yesterday's calls fail?" | Finds failed calls, reads transcripts, summarizes an agent or a campaign |
-| [omnidim-client-onboarding](skills/omnidim-client-onboarding/SKILL.md) | "Set up my new client and get them a number" | For resellers: creates and funds the client, runs its KYC where the region needs it, buys a number and attaches it |
+| [omnidim-onboard-client](skills/omnidim-onboard-client/SKILL.md) | "Set up my new client and get them a number" | For resellers: creates and funds the client, runs its KYC where the region needs it, buys a number and attaches it |
 
 ## Tips from real calls
 
