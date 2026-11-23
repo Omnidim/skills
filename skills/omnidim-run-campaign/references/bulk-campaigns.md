@@ -1,10 +1,14 @@
 # Running outbound campaigns
 
 ## Normal or dynamic
-- One-time list: a normal campaign. Create it (as a draft), add contacts, start it.
+- One-time list: a normal campaign. Create it as a draft with the first rows in
+  `contact_list`, add the rest with `addBulkCallContacts`, then start it after
+  the user's go-ahead.
 - Continuous leads (form fills, CRM events): a dynamic campaign (`is_dynamic: true`,
   no contact list) fed by `addBulkCallContact` as each lead arrives. The faster a
-  fresh lead is called, the higher the conversion.
+  fresh lead is called, the higher the conversion. One `addBulkCallContact`
+  starts a draft campaign at once, so send it only after the user approves the
+  launch.
 
 ## The two contact shapes (do not mix them)
 - `createBulkCall`'s `contact_list` rows are FLAT:
@@ -16,8 +20,10 @@
   one nested variable and garbles the agent's context.
 
 ## Build as a draft, then start
-- `createBulkCall` { name, phone_number_id, save_as_draft: true, ... }. Keep the
-  returned `id`. Without `save_as_draft` the campaign dials the moment it is created.
+- `createBulkCall` { name, phone_number_id, save_as_draft: true, contact_list, ... }.
+  A normal campaign needs `contact_list` at create; only a dynamic one may leave
+  it out. Keep the returned `id`. Without `save_as_draft` the campaign dials the
+  moment it is created.
 - `addBulkCallContacts` accepts up to 1000 contacts per request. Invalid rows come
   back in `rejected` with their index and reason; valid rows are still added, so one
   bad number never costs the batch.
@@ -31,7 +37,8 @@
 - Example: 100,000 calls in an 8-hour day is 12,500/hour, ~315 channels. The failure
   mode: concurrency 5 against 10,000 leads is ~200 calls/hour, a 50-hour "today"
   campaign.
-- `setBulkCallConcurrency` changes it mid-run; the org's ceiling caps it.
+- `setBulkCallConcurrency` changes it mid-run. A value above the org's ceiling is
+  refused.
 
 ## Numbers and rotation
 - One number dialing a whole campaign collects spam reports and stops being answered.
@@ -54,12 +61,16 @@
   timezone dials people at 11 PM, which is a compliance problem. Set both to the
   customers' region.
 - The agent has its own `timezone` field (`createAgent`/`updateAgent`) that sets the
-  local date and time it works with during calls. Set that to the customers' region too.
+  local date and time it works with during calls. Suggest the customers' region,
+  and change it only after the user's yes: the agent may serve other calls.
 
 ## Watching a campaign and reading results
-- `getBulkCallLiveStatus` for progress counts while it runs.
-- `listBulkCallLines` for per-contact outcomes: `pagesize` up to 150, follow
-  `next_cursor` until it comes back null, never build a cursor yourself.
+- `getBulkCallLiveStatus` for progress counts while it runs, when the user asks.
+  Do not poll it in a loop.
+- `listBulkCallLines` for per-contact outcomes: `pagesize` 10 (each row is about
+  2 KB, and a bigger page is cut to fit), filtered by `call_status` where it
+  helps. Follow `next_cursor` until it comes back null, never build a cursor
+  yourself. After 10 pages, ask the user before reading more.
   `include_total` once for a header, not on every page.
 - Rows carry `recording_id`, not the transcript; `getCallLog` serves it.
 - `retryBulkCall` re-queues contacts that did not connect; it refuses a campaign

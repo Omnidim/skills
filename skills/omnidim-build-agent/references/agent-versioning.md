@@ -7,25 +7,26 @@ if a change makes the agent worse.
 ## The tools
 
 - `listAgentVersions` { agent_id } - the timeline, newest first. Each entry has a
-  `version_number`, a `kind`, who saved it, and a `change_summary` (a one-line
-  "what changed in this version vs the one before it").
+  `version_number`, a `kind`, who saved it, and a `change_summary` (an object
+  with `first`, true only for the agent's first version, a `count`, and `items`, the
+  changes as label, old, new).
 - `createAgentVersion` { agent_id, name, note? } - save the agent's CURRENT
   config as a named version.
 - `diffAgentVersion` { agent_id, version_number, against? } - what changed (below).
 - `restoreAgentVersion` { agent_id, version_number } - write a version back onto
-  the live agent.
+  the agent. On a published agent it writes the draft: callers hear it after
+  the user publishes in the dashboard.
 - `renameAgentVersion` / `deleteAgentVersion` - tidy the timeline.
 
-`kind` is `manual` (a person saved it), `auto` (saved automatically a few minutes
-after editing settles - you do NOT trigger these), or `system` (a safety backup
-taken automatically right before a restore).
+`kind` is `manual` (someone saved it) or `system` (a safety backup taken right
+before a restore). Nothing saves versions automatically.
 
 ## When to snapshot
 
 Call `createAgentVersion` right BEFORE a change you might want to undo (swapping
 the model/voice, rewriting the prompt, changing transfer rules). Give it a clear
-`name`. You do not need to snapshot after routine edits - the platform auto-saves
-settled states on its own.
+`name`. The platform does not save versions on its own, so a change you did not
+snapshot first cannot be undone.
 
 ## How to read a diff
 
@@ -36,8 +37,9 @@ comparison with `against`:
 
 - **omit / `against=previous`** (default): what changed IN this version vs the
   one before it. Matches the `change_summary` in the list.
-- **`against=current`**: what restoring this version WOULD change vs the agent's
-  live config right now. Read this before a restore to preview the effect.
+- **`against=current`**: what restoring this version would change. `old` is
+  this version's value and `new` is the agent's value now: restoring turns
+  each `new` back into `old`. Read this before a restore to preview the effect.
 - **`against=<number>`**: compare with a specific other version.
 
 ## How to decide and perform a restore
@@ -45,20 +47,28 @@ comparison with `against`:
 1. `listAgentVersions` and scan `change_summary` to find the target version.
 2. `diffAgentVersion` { version_number, against: "current" } to preview exactly
    what restoring changes. If nothing meaningful changed, there is nothing to do.
-3. `restoreAgentVersion` { agent_id, version_number }. This first saves the
-   current state as a `system` "Backup before restore" version (so the restore is
-   itself undoable), then writes the chosen config back. The response's `skipped`
-   list reports references (knowledge files, integrations) that no longer exist
-   and were dropped rather than failing the restore.
-4. Confirm with `listAgentVersions` (a new `system` backup appears at the top).
+   Show the user the preview, and restore only on their yes.
+3. `restoreAgentVersion` { agent_id, version_number }. This first keeps the
+   current state as a backup (a new `system` "Backup before restore" version, or
+   an existing version that already holds the same state), so the restore is
+   itself undoable, then writes the chosen config back. The response's `skipped`
+   list reports what was dropped rather than failing the restore (such as
+   knowledge files, integrations, languages, the voice or post-call links).
+   Report every item in it to the user.
+4. Tell the user which version holds the backup; `safety_version` in the restore response names it.
 
 ## Gotchas
 
-- Version history is enabled per organization. If it is off for the caller's org,
-  these endpoints return 403 (`feature_disabled`).
+- Version history is enabled per organization and per plan. If it is off, these
+  endpoints return 403 `feature_disabled`, or `feature_not_entitled` when the
+  plan does not include it. `getAgent` shows `can_publish: false` in both cases.
 - `createAgentVersion` refuses a no-op: if nothing changed since the latest
-  version it returns 409 (`no_changes`). Make a real change first.
+  version it returns 409 (`no_changes`). The newest version already holds this
+  state: use its `version_number`.
 - There is a per-agent cap on versions created through the API; at the cap
-  `createAgentVersion` returns 409 (`version_limit_reached`) - delete an old one.
+  `createAgentVersion` returns 409 (`version_limit_reached`). Ask the user which
+  old version to delete. The published version cannot be deleted (409
+  `version_published`).
 - `listAgentVersions` and `diffAgentVersion` are read-only and safe to call
-  freely. Restore and delete mutate the live agent - confirm intent first.
+  freely. Restore and delete change the agent and its history: get the user's
+  yes first.
