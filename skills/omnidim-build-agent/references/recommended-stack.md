@@ -16,8 +16,8 @@ production, grouped by the language your callers speak. Use `listSTTProviders`,
 
 - Default: one of the OmniDimension voices, our most recommended voices. Our
   team picks them for each language and tests them on real calls. List them
-  with `listVoices` `provider=featured`, best first, and save one under its
-  `service` (`cartesia`). See `voices.md`.
+  with `listVoices` `provider=featured`, and save one under its `service`.
+  See `voices.md`.
 
 ## By caller language
 
@@ -26,17 +26,17 @@ production, grouped by the language your callers speak. Use `listSTTProviders`,
 - **Hindi / Hinglish (mixed Hindi and English):** transcriber `soniox`
   (handles code-mixed speech in one stream); an OmniDimension voice for Hindi.
 - **Other Indian languages (Tamil, Telugu, Marathi, Bengali, Gujarati,
-  Kannada, Malayalam, Punjabi):** transcriber `soniox`, or `sarvam` (tuned for
-  Indian languages); an OmniDimension voice for that language.
-- **US English:** transcriber `soniox` or `deepgram_stream`; an OmniDimension
-  voice for English (American).
+  Kannada, Malayalam, Punjabi):** transcriber `soniox`; an OmniDimension voice
+  for that language.
+- **US English:** transcriber `soniox`; an OmniDimension voice for English
+  (American).
 - **No OmniDimension voice for the language:** another `cartesia` voice.
 
 ## Field notes
 
-- `transcriber.provider` is a `name` from `listSTTProviders`, which lists only
-  the transcribers your organization can use. `deepgram_stream` also needs a
-  `model` (`nova-3` or `nova-2`); the others do not.
+- `transcriber.provider` is `soniox` unless the user asks for another one by
+  name. Any other choice must be a `name` from `listSTTProviders`, which lists
+  only the transcribers your organization can use.
 - `voice.provider` is the `service` of a voice from `listVoices`, which lists
   only voices your organization can use. Send only `provider` and `voice_id`:
   the platform picks the voice model.

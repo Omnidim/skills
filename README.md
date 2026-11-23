@@ -12,7 +12,7 @@ Teach your AI agent to build OmniDimension voice agents, test them with a real c
 
 On Claude Code before version 2.1.275, run `/plugin marketplace add Omnidim/skills`, then `/plugin install omnidim@omnidim`.
 
-**Codex, Cursor, Gemini CLI, Copilot, OpenCode** and [more](https://github.com/vercel-labs/skills#readme) get all five skills:
+**Codex, Cursor, Gemini CLI, Copilot, OpenCode** and [more](https://github.com/vercel-labs/skills#readme) get all six skills:
 
 ```
 npx skills add Omnidim/skills --skill '*' -g -y

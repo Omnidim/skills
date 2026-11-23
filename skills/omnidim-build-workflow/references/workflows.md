@@ -17,7 +17,7 @@ edges. It runs on OmniDimension's servers each time its trigger fires.
 5. `editWorkflow` with the `revision` from the last read and a list of `ops`.
 6. `validateWorkflow`, then fix what it reports with another `editWorkflow`.
 7. `testWorkflow` only after the user agrees (see "Test runs are real").
-8. `publishWorkflow`. The workflow is live at once: real events run it. Do not call `activateWorkflow` after it.
+8. Show the user the flow and get a yes, then `publishWorkflow`. The workflow is live at once: real events run it. Do not call `activateWorkflow` after it.
 
 `getWorkflow` with `view: structure` shows nodes and edges without config.
 Use it to orient in a large workflow. Use `view: full` before you edit config.
@@ -38,8 +38,11 @@ Most harm comes from changing a workflow the user did not ask you to touch.
 
 - Default to creating a NEW workflow. Edit an existing one only when the user names it.
 - Call `getWorkflow` first and read what it does before any edit. Keep its `revision`.
-- Your edits land on the draft and change nothing live until you publish.
-- `publishWorkflow` overwrites the live version that real events run. `deactivateWorkflow`
+- Your edits land on the draft and change nothing live until you publish, except
+  `webhook_enabled` on the trigger: it switches the live webhook URL at once. Ask
+  before you change it on an existing workflow.
+- `publishWorkflow` overwrites the live version that real events run. Publishing a
+  paused workflow turns it back on. `deactivateWorkflow`
   pauses automation the user depends on. `deleteWorkflow` stops it for good. Before any of
   these on an existing workflow, tell the user exactly what will change and get a yes.
 - Never publish, activate, deactivate, delete or test a workflow as a side effect of another task.
@@ -52,9 +55,9 @@ which later nodes read as `{{ context.<trigger id>.<field> }}`.
 | Trigger type | Fires when | How it is attached |
 |---|---|---|
 | `trigger` | After a call (post-call), or on a POST to the webhook URL | Post-call: the agent's post-call actions point at this workflow. Webhook: `update_node` the trigger with `config: { webhook_enabled: true }`, then `getWorkflow` returns `webhook_url` |
-| `whatsapp_inbound` | A WhatsApp message arrives | Its `phone_number_id` |
+| `whatsapp_inbound` | A media message (image, video, document, audio) arrives. Text still goes to the agent. Publishing moves the number off any other inbound workflow, so check with the user first | Its `phone_number_id` |
 | `twilio_sms_inbound` | An SMS arrives | Its Twilio integration |
-| `email_event_trigger` | A sent email is opened, clicked, replied to, or bounces | The source workflow or campaign |
+| `email_event_trigger` | A sent email is opened, clicked, replied to, or bounces | The source workflow |
 | `omnidim_crm_trigger`, `leadsquared_trigger`, `shopify_trigger`, `instantly_event_trigger` | An event in that system | Its integration |
 
 `getWorkflowNodeType` shows each trigger's `output_example`. The post-call
@@ -145,8 +148,10 @@ integration, tell them to connect one in the dashboard first.
 **Every node runs for real**: WhatsApp messages, SMS, emails and calls go out,
 and CRM records change. Before you call it, tell the user what will happen and
 get a yes. Use their own phone number or email in the payload. The call returns `202` with an
-`execution_id` at once. Poll `getWorkflowExecution` until `state` is `completed`, `failed` or
-`cancelled`, then read each node's status, output and error.
+`execution_id` at once. Check `getWorkflowExecution` up to 10 times, a few seconds apart,
+until `state` is `completed`, `failed` or `cancelled`, then read each node's status, output
+and error. A run that reaches a wait, call or email step can stay `waiting` for hours: then
+report the steps so far and stop.
 
 ## Errors you will see
 
@@ -156,7 +161,7 @@ get a yes. Use their own phone number or email in the payload. The call returns 
 | `422 validation_failed` on publish | Missing fields, an unconnected node, a bad handle | Fix each one, then publish again |
 | `422 invalid_op` | An op is malformed | Fix the op at `op_index` |
 | `409 revision_conflict` | The draft changed since you read it | `getWorkflow`, then retry |
-| `409 no_draft` | There is no draft to edit, validate or publish | `getWorkflow`, then make an edit to start a new draft |
+| `409 no_draft` | There is no draft to edit, validate or publish | No tool can make a draft. Tell the user and stop |
 | `400 no_options` | The field holds an id from another system | Ask the user for the value |
 | `422` with `templated_ref` | An id field holds a `{{ }}` template | Put a literal id from `listWorkflowFieldOptions` |
 
@@ -178,9 +183,10 @@ and tell #sales in Slack."
      handle: "True", config: { phone_number_id: <id>, message_type: "template",
      template_id: <id>, to_number: "{{ context.trigger.customer_number }}" } }`
    - `add_node { id: "notify_sales", type: "slack", after: "wa_followup",
-     config: { slack_webhook_url: "<from the user>",
+     config: { integration_id: <from listWorkflowFieldOptions>, channel: "<channel id the user confirms>",
      message: "Follow-up sent to {{ context.trigger.customer_number }}" } }`
    - `add_node { id: "about", type: "notes", config: { note_text: "Follows up
      interested leads after a call." } }`
-4. `validateWorkflow`, fix anything reported, then `publishWorkflow`.
+4. `validateWorkflow` and fix anything reported. Show the user the flow and get a
+   yes, then `publishWorkflow`.
 5. Tell the user to point the agent's post-call action at this workflow.

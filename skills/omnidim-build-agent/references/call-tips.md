@@ -50,20 +50,20 @@ the person says "please hold", the agent waits and does not repeat itself.
 
 Put variables in square brackets, like `[name]` or `[course]`. In a campaign
 they come from the contact list columns, so each name must match a column
-header, and every row needs a value. A missing value makes the agent say the
-placeholder out loud.
+header, and every row needs a value. A missing value makes the agent skip the
+placeholder, so the line sounds broken ("Hi, am I speaking with ?").
 
 ## 5. Outbound: keep the temperature low for scripted calls
 
 Outbound agents with `model.temperature` 0.3 or lower had a median early drop
 of 37% and natural end of 21% (52 agents in 21 accounts), against 45% and 14%
-at 0.3 to 0.7 (105 agents in 62 accounts). There were too few inbound agents
+above 0.3 up to 0.7 (105 agents in 62 accounts). There were too few inbound agents
 to tell.
 
 ## 6. One short question per turn
 
-Ask one thing, then listen. Repeat back what you heard in a few words
-("Got it, the evening slot") before the next question.
+Ask one thing, then listen. Answer the person's point directly, without
+filler openers or repeating their words back.
 
 ## 7. Speak the caller's language
 

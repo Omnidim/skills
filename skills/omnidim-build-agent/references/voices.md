@@ -10,7 +10,10 @@ OmniDimension voices are our most recommended voices. Our team picks them for
 each language and tests them on real calls. Use one unless the user asks for
 something else.
 
-- List them with `listVoices` `provider=featured`. They come back best first.
+- List them with `listVoices` `provider=featured`. Each one has a `gender` and
+  the `featured_languages` it speaks: pick one that matches the agent. If those
+  fields are missing, show the user a few names with their `sample_url` and
+  let them pick.
 - They cover English (India), English (American), Hindi, Tamil, Telugu,
   Marathi, Bengali, Gujarati, Kannada, Malayalam and Punjabi.
 - Each one runs on Cartesia: save it as `voice.provider` `cartesia` with its

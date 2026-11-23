@@ -1,9 +1,9 @@
 # Which carrier to buy from
 
 A region holds one or more carriers. They do not stock the same numbers and
-they are not interchangeable, so `carrier` is **required** on
-`searchPhoneNumbers` and `purchasePhoneNumber`, in every region, however few
-it holds.
+they are not interchangeable. `purchasePhoneNumber` requires `carrier`. Pass
+the same `carrier` to `searchPhoneNumbers`, so you search the stock you buy
+from.
 
 ## What each one stocks
 
@@ -33,7 +33,8 @@ file can be older than the account.
   region is not verified on the other, and a purchase it has not cleared fails
   with `409 kyc_incomplete`. Verification is not on this surface: send the user
   to the dashboard number shop.
-- **A carrier can be down.** One flagged unavailable is still named in the
-  refusal, and a purchase against it answers `422 purchase_failed`. Sell from
-  another one meanwhile.
+- **A carrier can be down.** The `409 carrier_required` body says whether each
+  one is taking orders. If the user's carrier is down, tell them and ask
+  whether to wait or use another. A purchase charges the account first and
+  refunds it if the carrier then fails.
 - **The name is stable across a rename**, so it is safe for a user to store.
