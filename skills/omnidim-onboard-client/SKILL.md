@@ -1,5 +1,5 @@
 ---
-name: omnidim-client-onboarding
+name: omnidim-onboard-client
 description: "Take a reseller's client on OmniDimension from nothing to a working phone number: create the account, fund it, verify it where the region requires it (India eKYC, US business checks), buy a number and attach it to an agent. Use when a reseller or agency onboards a new client, a client cannot buy a number because of KYC, or the user asks how to verify an account or set up a reseller client."
 ---
 
