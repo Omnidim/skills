@@ -13,7 +13,7 @@ Provision a working OmniDimension voice agent for this purpose:
 
 Follow these steps in order. Write tools take flat top-level arguments (no `requestBody` wrapper).
 
-1. Voice + models: Call `listVoices` and pick a premade voice; use its `name` as voice_id. Remember not every listed voice synthesizes, so verify audio on the test call. A good default model is gpt-4.1-mini.
+1. Voice + models: Start with the OmniDimension voices, our most recommended: call `listVoices` with `provider=featured` and pick the first one that speaks the caller's language. Use its `name` as voice_id and its `service` (`cartesia`) as the voice provider. Verify audio on the test call. A good default model is gpt-4.1-mini.
 2. Create the agent with `createAgent` (flat top-level fields):
    {
      "name": "<short name>",
@@ -21,7 +21,7 @@ Follow these steps in order. Write tools take flat top-level arguments (no `requ
      "context_breakdown": [ { "title": "Purpose", "body": "<the agent's instructions, derived from the purpose above>" } ],
      "call_type": "Outgoing",
      "model": { "model": "gpt-4.1-mini", "temperature": 0.5 },
-     "voice": { "provider": "cartesia", "voice_id": "<voice id>" },
+     "voice": { "provider": "cartesia", "voice_id": "<name from listVoices provider=featured>" },
      "transcriber": { "provider": "soniox" }
    }
    Before you write `welcome_message` and the instructions, read the

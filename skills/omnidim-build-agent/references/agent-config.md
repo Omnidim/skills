@@ -28,7 +28,7 @@ wrapper; see the routing guide). The fields:
   ],
   "call_type": "Incoming",
   "model": { "model": "gpt-4.1-mini" },
-  "voice": { "provider": "cartesia", "voice_id": "bf0a246a-8642-498a-9950-80c35e9276b5" },
+  "voice": { "provider": "cartesia", "voice_id": "b521b304-7672-4cf9-9a34-b4eb1df1bde0" },
   "transcriber": { "provider": "soniox" }
 }
 
@@ -42,7 +42,7 @@ wrapper; see the routing guide). The fields:
   ],
   "call_type": "Outgoing",
   "model": { "model": "gpt-4.1-mini" },
-  "voice": { "provider": "cartesia", "voice_id": "<pick one from listVoices>" },
+  "voice": { "provider": "cartesia", "voice_id": "<a Hindi voice from listVoices provider=featured>" },
   "transcriber": { "provider": "soniox" }
 }
 

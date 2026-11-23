@@ -9,26 +9,37 @@ production, grouped by the language your callers speak. Use `listSTTProviders`,
 
 - Default: `gpt-4.1-mini` -- fast and accurate across languages, a good first
   choice for almost any agent.
-- Alternatives: `gemini-2.5-flash`, `gpt-4o` (premium), `gpt-4.1-nano` (lighter).
+- Alternatives: any other `name` from `listLLMProviders`, which lists only the
+  models your organization can use.
+
+## Voice
+
+- Default: one of the OmniDimension voices, our most recommended voices. Our
+  team picks them for each language and tests them on real calls. List them
+  with `listVoices` `provider=featured`, best first, and save one under its
+  `service` (`cartesia`). See `voices.md`.
 
 ## By caller language
 
-- **Indian English (en-IN):** transcriber `soniox`; voice `cartesia`
-  (default) or `google`.
+- **Indian English (en-IN):** transcriber `soniox`; an OmniDimension voice
+  for English (India).
 - **Hindi / Hinglish (mixed Hindi and English):** transcriber `soniox`
-  (handles code-mixed speech in one stream); voice `cartesia`.
-- **Other Indian languages (Telugu, Bengali, etc.):** transcriber `soniox` or
-  `sarvam` (tuned for Indian languages); voice `cartesia` or `sarvam`.
-- **US / UK English:** transcriber `soniox` or `deepgram_stream`; voice
-  `cartesia`.
+  (handles code-mixed speech in one stream); an OmniDimension voice for Hindi.
+- **Other Indian languages (Tamil, Telugu, Marathi, Bengali, Gujarati,
+  Kannada, Malayalam, Punjabi):** transcriber `soniox`, or `sarvam` (tuned for
+  Indian languages); an OmniDimension voice for that language.
+- **US English:** transcriber `soniox` or `deepgram_stream`; an OmniDimension
+  voice for English (American).
+- **No OmniDimension voice for the language:** another `cartesia` voice.
 
 ## Field notes
 
-- `transcriber.provider` is one of `deepgram_stream`, `azure_stream`, `soniox`,
-  `sarvam`, `cartesia`. `deepgram_stream` also needs a `model` (`nova-3` or
-  `nova-2`); the others do not.
-- `voice.provider` is one of `cartesia`, `eleven_labs`, `google`, `sarvam`.
-  Send only `provider` and `voice_id`: the platform picks the voice model.
+- `transcriber.provider` is a `name` from `listSTTProviders`, which lists only
+  the transcribers your organization can use. `deepgram_stream` also needs a
+  `model` (`nova-3` or `nova-2`); the others do not.
+- `voice.provider` is the `service` of a voice from `listVoices`, which lists
+  only voices your organization can use. Send only `provider` and `voice_id`:
+  the platform picks the voice model.
 
 ## Responsiveness
 
