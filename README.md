@@ -4,7 +4,7 @@ Teach your AI agent to build OmniDimension voice agents, test them with a real c
 
 ## Install
 
-**Claude Code** gets all five skills and the MCP server in one step:
+**Claude Code** gets all six skills and the MCP server in one step:
 
 ```
 /plugin install omnidim --marketplace Omnidim/skills
@@ -33,6 +33,7 @@ In the order you usually need them:
 | [omnidim-run-campaign](skills/omnidim-run-campaign/SKILL.md) | "Call these 500 leads about the webinar" | Drafts the campaign, adds contacts, checks calling hours and concurrency, then starts it |
 | [omnidim-build-workflow](skills/omnidim-build-workflow/SKILL.md) | "After each call, send hot leads to Slack" | Builds, tests and publishes the automation |
 | [omnidim-audit-calls](skills/omnidim-audit-calls/SKILL.md) | "Why did yesterday's calls fail?" | Finds failed calls, reads transcripts, summarizes an agent or a campaign |
+| [omnidim-client-onboarding](skills/omnidim-client-onboarding/SKILL.md) | "Set up my new client and get them a number" | For resellers: creates and funds the client, runs its KYC where the region needs it, buys a number and attaches it |
 
 ## Tips from real calls
 
@@ -43,7 +44,7 @@ In the order you usually need them:
 ```
 skills/<skill>/SKILL.md       the steps your agent follows
 skills/<skill>/references/    the guides those steps link to
-.claude-plugin/               the Claude Code plugin: the five skills plus the MCP server
+.claude-plugin/               the Claude Code plugin: the six skills plus the MCP server
 ```
 
 ## Where the text comes from

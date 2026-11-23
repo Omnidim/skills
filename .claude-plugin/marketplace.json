@@ -7,7 +7,7 @@
       "name": "omnidim",
       "source": "./",
       "strict": false,
-      "description": "All five OmniDimension skills, plus the hosted OmniDimension MCP server",
+      "description": "All six OmniDimension skills, plus the hosted OmniDimension MCP server",
       "homepage": "https://github.com/Omnidim/skills",
       "license": "Apache-2.0",
       "skills": [
@@ -15,7 +15,8 @@
         "./skills/omnidim-build-agent",
         "./skills/omnidim-run-campaign",
         "./skills/omnidim-build-workflow",
-        "./skills/omnidim-audit-calls"
+        "./skills/omnidim-audit-calls",
+        "./skills/omnidim-client-onboarding"
       ],
       "mcpServers": {
         "omnidim": { "type": "http", "url": "https://mcp.omnidim.io/mcp" }
