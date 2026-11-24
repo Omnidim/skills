@@ -49,15 +49,22 @@ In the order you usually need them:
 ## What is in this repo
 
 ```
-skills/<skill>/SKILL.md       the steps your agent follows
-skills/<skill>/references/    the guides those steps link to
+skills/<skill>/SKILL.md       when to use the skill, and which playbook to read
+skills/<skill>/<playbook>.md  the steps for one task
+guides/<kind>/<name>.md       the omnidim://<kind>/<name> guides the playbooks link to
 .claude-plugin/               the Claude plugin manifest and icon
 .mcp.json                     the hosted MCP server the plugin connects
 ```
 
-## Where the text comes from
+## Change a skill here
 
-The skills are the same steps and guides the [OmniDimension MCP server](https://github.com/Omnidim/omnidim-mcp-cloud) serves, written out by its `scripts/export_skills.py`, along with the plugin manifest. Change them there, then rerun it on a clone of this repo.
+This repo is the one place the playbooks and guides are written. The [OmniDimension MCP server](https://github.com/Omnidim/omnidim-mcp-cloud) serves the same files to every connected AI app through `readGuide`, its prompts and its resources.
+
+1. Edit the markdown in a pull request. Use a `feat:` or `fix:` title so the plugin version goes up and installed plugins update.
+2. The `check-against-server` check runs the server's playbook tests on your change: every playbook is still served, every tool it names exists, and every rule the tests pin still holds.
+3. After the merge, the server picks the change up in its next morning's sync pull request and ships it with its next release.
+
+To add a playbook, add `skills/<skill>/<name-with-dashes>.md` starting with `# <one-line title>`, then add its name and inputs to `_PLAYBOOK_INPUTS` in the server's `app/procedures.py`.
 
 ## License
 
