@@ -1,3 +1,8 @@
+---
+name: "Running outbound campaigns"
+description: "The campaign lifecycle end to end: draft, batch contacts (two contact shapes, do not mix), rotation, concurrency arithmetic, the agent-timezone trap, cursor-paged results."
+---
+
 # Running outbound campaigns
 
 ## Normal or dynamic

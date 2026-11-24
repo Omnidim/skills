@@ -1,3 +1,8 @@
+---
+name: "Which carrier to buy a number from"
+description: "The carriers each region holds and what each one stocks, why `carrier` is required on search and purchase, and the rules that decide which to use: ask rather than pick, buy from the carrier you searched, verification is per carrier."
+---
+
 # Which carrier to buy from
 
 A region holds one or more carriers. They do not stock the same numbers and

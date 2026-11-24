@@ -44,20 +44,27 @@ In the order you usually need them:
 
 ## Tips from real calls
 
-[What the best agents do](skills/omnidim-build-agent/references/call-tips.md), from answered calls of 200 agents in 86 accounts. The biggest one, for outbound calls: open with a name check of 8 words or fewer, like "Hi, am I speaking with [name]?". The median agent with a greeting that short lost 31% of its answered calls in the first 15 seconds, against 46 to 49% for greetings of 16 words or more.
+[What the best agents do](guides/guide/call-tips.md), from answered calls of 200 agents in 86 accounts. The biggest one, for outbound calls: open with a name check of 8 words or fewer, like "Hi, am I speaking with [name]?". The median agent with a greeting that short lost 31% of its answered calls in the first 15 seconds, against 46 to 49% for greetings of 16 words or more.
 
 ## What is in this repo
 
 ```
-skills/<skill>/SKILL.md       the steps your agent follows
-skills/<skill>/references/    the guides those steps link to
+skills/<skill>/SKILL.md       when to use the skill, and which playbook to read
+skills/<skill>/<playbook>.md  the steps for one task
+guides/<kind>/<name>.md       the omnidim://<kind>/<name> guides the playbooks link to
 .claude-plugin/               the Claude plugin manifest and icon
 .mcp.json                     the hosted MCP server the plugin connects
 ```
 
-## Where the text comes from
+## Change a skill here
 
-The skills are the same steps and guides the [OmniDimension MCP server](https://github.com/Omnidim/omnidim-mcp-cloud) serves, written out by its `scripts/export_skills.py`, along with the plugin manifest. Change them there, then rerun it on a clone of this repo.
+This repo is the one place the playbooks and guides are written. The [OmniDimension MCP server](https://github.com/Omnidim/omnidim-mcp-cloud) serves the same files to every connected AI app through `readGuide`, its prompts and its resources.
+
+1. Edit the markdown in a pull request. Use a `feat:` or `fix:` title so the plugin version goes up and installed plugins update.
+2. The `check-against-server` check runs the server's playbook tests on your change: every playbook is still served, every tool it names exists, and every rule the tests pin still holds.
+3. After the merge, the server picks the change up in its next morning's sync pull request and ships it with its next release.
+
+To add a playbook, add `skills/<skill>/<name-with-dashes>.md`: a header with its `name` and the `arguments` an MCP prompt picker asks for (copy an existing playbook), then `# <one-line title>`, then the steps. Link it from the skill's `SKILL.md`. The server serves it as soon as it syncs.
 
 ## License
 

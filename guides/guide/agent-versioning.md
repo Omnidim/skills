@@ -1,3 +1,8 @@
+---
+name: "Agent version history"
+description: "How to save, diff, and restore agent config snapshots: which tool to call, what the diff `against` modes mean, how to decide on a restore, and the 403/409 gotchas."
+---
+
 # Agent version history
 
 A **version** is a frozen snapshot of an agent's configuration at a point in

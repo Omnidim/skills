@@ -1,3 +1,8 @@
+---
+name: "OmniDimension routing guide"
+description: "Which tool to call when, ID flow between calls, and the non-obvious rules proven against the live API."
+---
+
 # OmniDimension routing guide
 
 OmniDimension is a voice AI platform. You create an **agent** (a.k.a. "bot"),
@@ -6,11 +11,11 @@ give it a **phone number** and optionally a **knowledge base**, then place
 
 ## How to pick the right tool
 
-- "Create / set up an agent that does X" -> the design steps of the omnidim-build-agent skill, then
-  the build steps of the omnidim-build-agent skill once the user approves the design.
-- "Change / fix an agent" -> the update steps of the omnidim-build-agent skill.
+- "Create / set up an agent that does X" -> the `design_agent` playbook, then
+  the `provision_agent` playbook once the user approves the design.
+- "Change / fix an agent" -> the `update_agent` playbook.
 - "Why did calls fail / what happened on a call / summarize calls" -> the
-  the omnidim-audit-calls skill, then `listCallLogs` + `getCallLog`.
+  `audit_calls` playbook, then `listCallLogs` + `getCallLog`.
 - "List / inspect what exists" -> `listAgents`, `listPhoneNumbers`,
   `listVoices`, `listKnowledgeBaseFiles`.
 - "Get me a number / buy a number" -> `searchPhoneNumbers` { region, carrier }
@@ -21,12 +26,12 @@ give it a **phone number** and optionally a **knowledge base**, then place
   `purchasePhoneNumber` requires `carrier`. Pass the same `carrier` to the
   search, so you search the stock you buy from. Carriers do not stock the
   same numbers, so ask the user which one they want rather than picking:
-  see the `carriers.md` resource for what each one stocks.
+  see the `omnidim://reference/carriers` resource for what each one stocks.
   `searchPhoneNumbers`'s response echoes the `carrier` a purchase must pass.
 - "Place one call now" -> `dispatchCall`. "Call many contacts" -> the
-  the omnidim-run-campaign skill.
+  `build_outbound_campaign` playbook.
 - "Book a demo / talk to the team", or a yes to a demo you offered -> the
-  the demo booking steps: `getDemoQuestions`, `requestDemo`, then `bookDemo`.
+  `book_demo` playbook: `getDemoQuestions`, `requestDemo`, then `bookDemo`.
 
 ## Rules that are easy to get wrong (proven against the live API)
 
@@ -55,7 +60,7 @@ give it a **phone number** and optionally a **knowledge base**, then place
    `call_conversation`. Never treat the dispatch response as the outcome.
 6. **Reading agents:** `getAgent` and `listAgents` return the settings in
    other names and shapes than `createAgent` and `updateAgent` take (see the
-   `agent-config.md` resource). Read the voice from
+   `omnidim://reference/agent-config` resource). Read the voice from
    `voice_external_id` and `voice_provider`, never from `voice`.
 7. **`listCallLogs` rows are large** and the response is trimmed if it grows
    past the size cap. Scan with `include_details: false` and `pagesize` 5
