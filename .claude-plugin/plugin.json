@@ -1,0 +1,21 @@
+{
+  "name": "omnidim",
+  "displayName": "OmniDimension",
+  "version": "0.19.1",
+  "description": "Build, test and update voice AI phone agents, place calls, run call campaigns, review call logs, and automate workflows and WhatsApp in your OmniDimension account.",
+  "author": {
+    "name": "OmniDimension",
+    "url": "https://omnidim.io"
+  },
+  "homepage": "https://docs.omnidim.io/docs/mcp",
+  "repository": "https://github.com/Omnidim/skills",
+  "license": "Apache-2.0",
+  "privacyPolicyUrl": "https://omnidim.io/privacy-policy",
+  "keywords": [
+    "voice-ai",
+    "phone-calls",
+    "voice-agents",
+    "call-campaigns",
+    "workflows"
+  ]
+}

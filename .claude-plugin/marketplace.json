@@ -1,26 +1,15 @@
 {
   "name": "omnidim",
-  "owner": { "name": "OmniDimension", "url": "https://omnidim.io" },
-  "description": "Skills that teach an AI agent to build, call with and review OmniDimension voice agents",
+  "owner": {
+    "name": "OmniDimension",
+    "url": "https://omnidim.io"
+  },
+  "description": "Build, test and update voice AI phone agents, place calls, run call campaigns, review call logs, and automate workflows and WhatsApp in your OmniDimension account.",
   "plugins": [
     {
       "name": "omnidim",
       "source": "./",
-      "strict": false,
-      "description": "All six OmniDimension skills, plus the hosted OmniDimension MCP server",
-      "homepage": "https://github.com/Omnidim/skills",
-      "license": "Apache-2.0",
-      "skills": [
-        "./skills/omnidim-connect",
-        "./skills/omnidim-build-agent",
-        "./skills/omnidim-run-campaign",
-        "./skills/omnidim-build-workflow",
-        "./skills/omnidim-audit-calls",
-        "./skills/omnidim-onboard-client"
-      ],
-      "mcpServers": {
-        "omnidim": { "type": "http", "url": "https://mcp.omnidim.io/mcp" }
-      }
+      "description": "Build, test and update voice AI phone agents, place calls, run call campaigns, review call logs, and automate workflows and WhatsApp in your OmniDimension account."
     }
   ]
 }
