@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.21.0](https://github.com/Omnidim/skills/compare/v0.20.0...v0.21.0) (2026-11-24)
+
+
+### Added
+
+* name the merged MCP tools in the playbooks and guides ([1789389](https://github.com/Omnidim/skills/commit/178938917d6daa966eada1d3e138127ba4b3d646))
+* name the merged MCP tools in the playbooks and guides ([4dbe9b5](https://github.com/Omnidim/skills/commit/4dbe9b54c9ce046f00adc9b5f4cddf2534812e07))
+
 ## [0.20.0](https://github.com/Omnidim/skills/compare/v0.19.1...v0.20.0) (2026-11-24)
 
 
