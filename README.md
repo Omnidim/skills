@@ -64,7 +64,7 @@ This repo is the one place the playbooks and guides are written. The [OmniDimens
 2. The `check-against-server` check runs the server's playbook tests on your change: every playbook is still served, every tool it names exists, and every rule the tests pin still holds.
 3. After the merge, the server picks the change up in its next morning's sync pull request and ships it with its next release.
 
-To add a playbook, add `skills/<skill>/<name-with-dashes>.md` starting with `# <one-line title>`, then add its name and inputs to `_PLAYBOOK_INPUTS` in the server's `app/procedures.py`.
+To add a playbook, first merge its name and inputs into `_PLAYBOOK_INPUTS` in the server's `app/procedures.py`. Then add `skills/<skill>/<name-with-dashes>.md` here, starting with `# <one-line title>`. The order matters: this repo's check runs the server's `main`, which must already know the name.
 
 ## License
 
