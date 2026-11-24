@@ -1,3 +1,8 @@
+---
+name: "Recommended provider stacks by language"
+description: "Which transcriber (STT), voice (TTS), and language model to choose, grouped by the caller's language. Reflects what works in production."
+---
+
 # Recommended provider stacks
 
 Each agent uses a transcriber (speech-to-text), a voice (text-to-speech), and a
@@ -17,7 +22,7 @@ production, grouped by the language your callers speak. Use `listSTTProviders`,
 - Default: one of the OmniDimension voices, our most recommended voices. Our
   team picks them for each language and tests them on real calls. List them
   with `listVoices` `provider=featured`, and save one under its `service`.
-  See `voices.md`.
+  See `omnidim://reference/voices`.
 
 ## By caller language
 
@@ -45,4 +50,4 @@ production, grouped by the language your callers speak. Use `listSTTProviders`,
 
 - Keep the system prompt focused. Long prompts add latency to every turn.
 - Verify your chosen voice on a short test call before launch (see
-  `voices.md`).
+  `omnidim://reference/voices`).

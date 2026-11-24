@@ -1,3 +1,8 @@
+---
+name: "Building workflows"
+description: "How to build a workflow end to end: the tool order, lifecycle, triggers (entry), outputs and edges, exit, passing data, moving nodes, notes, ops, credentials, real test runs, errors, and a worked example."
+---
+
 # Building workflows
 
 A workflow is a graph: one trigger node, then action and flow nodes joined by

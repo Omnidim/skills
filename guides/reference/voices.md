@@ -1,3 +1,8 @@
+---
+name: "Choosing a voice"
+description: "Start with OmniDimension voices (listVoices provider=featured), our most recommended; how to save one, and what to pick when none fits."
+---
+
 # Choosing a voice
 
 `listVoices` returns only the voices your organization can use. Use a voice's

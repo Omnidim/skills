@@ -1,3 +1,8 @@
+---
+name: "Writing the agent's prompt"
+description: "The eight sections every agent prompt has: identity, language, conversation rules, call flow, voice, facts, objections, safety."
+---
+
 # Writing the agent's prompt: eight sections
 
 Write instructions TO the agent ("You are...", "When the person says..., you...").
@@ -52,7 +57,7 @@ question > the call goal > the flow.
   the person to judge a reason ("will this help?").
 - Banned: "Great", "Perfect", "Got it", "Absolutely", "Understood", the design's
   banned phrases, and opening a turn with "I understand". Ask for the person's
-  time only in the opening, as the `call-tips.md` resource
+  time only in the opening, as the `omnidim://guide/call-tips` resource
   describes, and never again. Acknowledge real emotion at most once per call.
   Use a different bridge for each change of topic.
 

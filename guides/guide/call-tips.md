@@ -1,3 +1,8 @@
+---
+name: "Tips from real calls"
+description: "What the best agents do on real calls: a short name-check greeting (measured), who and why on the second turn, call screening, placeholders, temperature (measured), ending calls."
+---
+
 # Tips from real calls: what the best agents do
 
 Where this comes from: answered calls in the 30 days to 20 November 2026, from
@@ -70,7 +75,7 @@ filler openers or repeating their words back.
 Tell the agent to answer in the language the caller uses, and to keep the
 words people really say for products and forms (often English terms inside
 Hindi or another language). Pick the transcriber and voice from the
-`recommended-stack.md` guide for that language.
+`omnidim://reference/recommended-stack` guide for that language.
 
 ## 8. End the call on purpose
 
@@ -83,7 +88,7 @@ instead of waiting for a silence timeout.
 
 The language model, the prompt length and the speech speed showed no steady
 difference once accounts with very different call types were compared. Pick
-the model by language and cost (`recommended-stack.md`), and
+the model by language and cost (`omnidim://reference/recommended-stack`), and
 keep `voice.speech_speed` near 1.0 unless the user asks for a change.
 
 If something here is unclear, call `searchDocs`.

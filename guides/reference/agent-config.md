@@ -1,3 +1,8 @@
+---
+name: "Building an agent with createAgent"
+description: "The createAgent field shape with two complete, copy-ready example configurations (Indian-English support, Hindi/Hinglish reminder)."
+---
+
 # Building an agent with createAgent
 
 On this server `createAgent` takes flat top-level arguments (no `requestBody`
@@ -69,4 +74,4 @@ a field was not saved: fix it and send it again.
 }
 
 These show the field shape only. A real agent gets the full prompt and
-settings from the build steps of the omnidim-build-agent skill.
+settings from the `provision_agent` playbook.
