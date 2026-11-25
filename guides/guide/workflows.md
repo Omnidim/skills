@@ -188,7 +188,7 @@ and tell #sales in Slack."
      handle: "True", config: { phone_number_id: <id>, message_type: "template",
      template_id: <id>, to_number: "{{ context.trigger.customer_number }}" } }`
    - `add_node { id: "notify_sales", type: "slack", after: "wa_followup",
-     config: { integration_id: <from workflow action field_options>, channel: "<channel id the user confirms>",
+     config: { integration_id: <from listWorkflowFieldOptions>, channel: "<channel id the user confirms>",
      message: "Follow-up sent to {{ context.trigger.customer_number }}" } }`
    - `add_node { id: "about", type: "notes", config: { note_text: "Follows up
      interested leads after a call." } }`
