@@ -61,8 +61,10 @@ assets/logo.png               the ChatGPT plugin icon
 To submit a new ChatGPT plugin version, build its ZIP and upload it at [platform.openai.com/plugins](https://platform.openai.com/plugins):
 
 ```
-git ls-files plugin.json mcp.json skills assets | zip omnidim-chatgpt.zip -@
+git ls-files plugin.json mcp.json skills assets ':!skills/omnidim-run-campaign' | zip omnidim-chatgpt.zip -@
 ```
+
+The ChatGPT ZIP leaves out `omnidim-run-campaign`, because the OpenAI portal flags outbound call campaigns against its usage policies. The campaign tools stay on the server.
 
 A change to the MCP server needs no new ZIP. ChatGPT rescans the server every day.
 

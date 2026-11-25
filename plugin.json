@@ -44,8 +44,8 @@
             {
               "description": "Design and create a new voice agent from a plain description.",
               "prompt": "Create a voice agent for a dental clinic that answers calls, tells callers the opening hours (Mon to Sat, 9am to 6pm) and books appointments. Use English.",
-              "tools_triggered": "readGuide, createAgent",
-              "expected_behavior": "Reads the design_agent playbook with readGuide, shows the planned agent, and after the user confirms calls createAgent. Returns the new agent's name and id."
+              "tools_triggered": "createAgent",
+              "expected_behavior": "Calls createAgent with the clinic's hours and booking steps in the prompt, and returns the new agent's name and id. It may read the design_agent playbook with readGuide first."
             },
             {
               "description": "Check the account balance.",
