@@ -1,0 +1,90 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "omnidim",
+  "version": "0.21.0",
+  "description": "Build, test and update voice AI phone agents, place calls, run call campaigns, review call logs, and automate workflows and WhatsApp in your OmniDimension account.",
+  "author": {
+    "name": "OmniDimension",
+    "url": "https://omnidim.io"
+  },
+  "homepage": "https://docs.omnidim.io/docs/mcp",
+  "repository": "https://github.com/Omnidim/skills",
+  "license": "Apache-2.0",
+  "keywords": ["voice-ai", "phone-calls", "voice-agents", "call-campaigns", "workflows"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "OmniDimension",
+        "shortDescription": "Build voice AI phone agents",
+        "longDescription": "Build voice AI agents that answer and make phone calls for your business, right from ChatGPT. Describe the agent you need and OmniDimension sets up its voice, language, knowledge base and call flow. Place a test call, launch an outbound call campaign, and read call logs with transcripts and outcomes. You can also review past calls for problems, roll an agent back to an earlier version, build automation workflows, and send WhatsApp messages. Sign in with your OmniDimension account. Every action runs in your own account.",
+        "developerName": "OmniDimension",
+        "category": "Productivity",
+        "websiteURL": "https://omnidim.io",
+        "supportURL": "https://omnidim.io/contact-us",
+        "privacyPolicyURL": "https://omnidim.io/privacy-policy",
+        "termsOfServiceURL": "https://omnidim.io/terms-of-use",
+        "defaultPrompt": [
+          "Build a voice agent that books appointments for my dental clinic",
+          "Show my voice agents",
+          "Summarize my latest calls"
+        ],
+        "logo": "./assets/logo.png",
+        "composerIcon": "./assets/logo.png"
+      },
+      "review": {
+        "commerce": false,
+        "test_cases": {
+          "positive": [
+            {
+              "description": "List the voice agents in the signed-in account.",
+              "prompt": "Show me all my OmniDimension voice agents.",
+              "tools_triggered": "listAgents",
+              "expected_behavior": "Calls listAgents and lists each agent by name and id. The review account has sample agents, so the list is not empty."
+            },
+            {
+              "description": "Design and create a new voice agent from a plain description.",
+              "prompt": "Create a voice agent for a dental clinic that answers calls, tells callers the opening hours (Mon to Sat, 9am to 6pm) and books appointments. Use English.",
+              "tools_triggered": "readGuide, createAgent",
+              "expected_behavior": "Reads the design_agent playbook with readGuide, shows the planned agent, and after the user confirms calls createAgent. Returns the new agent's name and id."
+            },
+            {
+              "description": "Check the account balance.",
+              "prompt": "How much balance is left in my OmniDimension account?",
+              "tools_triggered": "getAccountBalance",
+              "expected_behavior": "Calls getAccountBalance and states the balance with its currency."
+            },
+            {
+              "description": "Review recent calls.",
+              "prompt": "Summarize my 5 most recent calls and tell me how each one ended.",
+              "tools_triggered": "listCallLogs",
+              "expected_behavior": "Calls listCallLogs with a page size of 5 and summarizes each call's agent, duration and outcome. If the account has no calls yet, says so plainly."
+            },
+            {
+              "description": "Answer a product question from the OmniDimension docs.",
+              "prompt": "How do I connect my own Twilio number to an OmniDimension agent?",
+              "tools_triggered": "searchDocs",
+              "expected_behavior": "Calls searchDocs and answers with the steps from the docs, with a link to the docs page."
+            }
+          ],
+          "negative": [
+            {
+              "description": "A general question with no link to voice agents or calls. The app must not be called.",
+              "prompt": "What is the weather in Paris today?"
+            },
+            {
+              "description": "A writing request with no link to the user's OmniDimension account. The app must not be called.",
+              "prompt": "Write a short poem about the ocean."
+            },
+            {
+              "description": "A request about phones that OmniDimension does not handle. The app must not be called.",
+              "prompt": "Which smartphone has the best camera this year?"
+            }
+          ]
+        }
+      },
+      "publication": {
+        "release_notes": "First release: build voice AI phone agents, place calls, run call campaigns and review call logs from ChatGPT."
+      }
+    }
+  }
+}
