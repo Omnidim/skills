@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "omnidim",
   "version": "0.21.0",
-  "description": "Build, test and update voice AI phone agents, place calls, run call campaigns, review call logs, and automate workflows and WhatsApp in your OmniDimension account.",
+  "description": "Build, test and update voice AI phone agents, place calls, call your own customer lists, review call logs, and automate workflows and WhatsApp in your OmniDimension account.",
   "author": {
     "name": "OmniDimension",
     "url": "https://omnidim.io"
@@ -10,13 +10,13 @@
   "homepage": "https://docs.omnidim.io/docs/mcp",
   "repository": "https://github.com/Omnidim/skills",
   "license": "Apache-2.0",
-  "keywords": ["voice-ai", "phone-calls", "voice-agents", "call-campaigns", "workflows"],
+  "keywords": ["voice-ai", "phone-calls", "voice-agents", "customer-calls", "workflows"],
   "extensions": {
     "com.openai": {
       "interface": {
         "displayName": "OmniDimension",
         "shortDescription": "Build voice AI phone agents",
-        "longDescription": "Build voice AI agents that answer and make phone calls for your business, right from ChatGPT. Describe the agent you need and OmniDimension sets up its voice, language, knowledge base and call flow. Place a test call, launch an outbound call campaign, and read call logs with transcripts and outcomes. You can also review past calls for problems, roll an agent back to an earlier version, build automation workflows, and send WhatsApp messages. Sign in with your OmniDimension account. Every action runs in your own account.",
+        "longDescription": "Build voice AI agents that answer and make phone calls for your business, right from ChatGPT. Describe the agent you need and OmniDimension sets up its voice, language, knowledge base and call flow. Place a test call, call your own customer lists for reminders and follow-ups, and read call logs with transcripts and outcomes. You can also review past calls for problems, roll an agent back to an earlier version, build automation workflows, and send WhatsApp messages. Sign in with your OmniDimension account. Every action runs in your own account.",
         "developerName": "OmniDimension",
         "category": "Productivity",
         "websiteURL": "https://omnidim.io",
@@ -83,7 +83,7 @@
         }
       },
       "publication": {
-        "release_notes": "First release: build voice AI phone agents, place calls, run call campaigns and review call logs from ChatGPT."
+        "release_notes": "First release: build voice AI phone agents, place calls, call your own customer lists for reminders and follow-ups, and review call logs from ChatGPT."
       }
     }
   }
