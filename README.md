@@ -54,7 +54,17 @@ skills/<skill>/<playbook>.md  the steps for one task
 guides/<kind>/<name>.md       the omnidim://<kind>/<name> guides the playbooks link to
 .claude-plugin/               the Claude plugin manifest and icon
 .mcp.json                     the hosted MCP server the plugin connects
+plugin.json, mcp.json         the ChatGPT plugin manifest, listing and review test cases
+assets/logo.png               the ChatGPT plugin icon
 ```
+
+To submit a new ChatGPT plugin version, build its ZIP and upload it at [platform.openai.com/plugins](https://platform.openai.com/plugins):
+
+```
+git ls-files plugin.json mcp.json skills assets | zip omnidim-chatgpt.zip -@
+```
+
+A change to the MCP server needs no new ZIP. ChatGPT rescans the server every day.
 
 ## Change a skill here
 
