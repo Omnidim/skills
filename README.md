@@ -1,10 +1,12 @@
 # OmniDimension skills
 
-Teach your AI agent to build OmniDimension voice agents, test them with a real call, run calling campaigns, automate what happens after each call, and review how the calls went.
+These skills teach your AI assistant to build phone agents on [OmniDimension](https://omnidim.io). You describe the agent you want, and your assistant designs the call with you, sets up the voice and the number, and rings your phone so you can hear the agent before anyone else does.
+
+Say you run a dental clinic. You tell Claude "build an agent that answers our phone and books cleanings". It asks you a few questions, shows you the call plan, connects your calendar, and calls you to test it. If something sounds off on that call, you tell it what to change.
 
 ## Install
 
-**Claude Code** gets all six skills and the MCP server in one step:
+**Claude Code** gets all six skills and the OmniDimension connection in one step:
 
 ```
 /plugin install omnidim --marketplace Omnidim/skills
@@ -12,71 +14,53 @@ Teach your AI agent to build OmniDimension voice agents, test them with a real c
 
 On Claude Code before version 2.1.275, run `/plugin marketplace add Omnidim/skills`, then `/plugin install omnidim@omnidim`.
 
-**claude.ai and the Claude desktop app** (paid plans) get the same plugin:
+**claude.ai and the Claude desktop app** (paid plans):
 
 1. Open **Customize**, then **Plugins**.
 2. Click **Add**, then **Add marketplace**, and enter `Omnidim/skills`.
 3. Install **OmniDimension**.
 4. On the plugin's **Connectors** tab, connect OmniDimension and sign in.
 
-**Codex, Cursor, Gemini CLI, Copilot, OpenCode** and [more](https://github.com/vercel-labs/skills#readme) get all six skills:
+**Codex, Cursor, Gemini CLI, Copilot, OpenCode** and [more](https://github.com/vercel-labs/skills#readme):
 
 ```
 npx skills add Omnidim/skills --skill '*' -g -y
 ```
 
-**Any other agent:** copy the folders in [`skills/`](skills) into its skills folder.
+**Any other assistant:** copy the folders in [`skills/`](skills) into its skills folder.
 
-The skills need the OmniDimension MCP server. The Claude Code plugin adds it for you: run `/mcp` once to sign in. For any other agent, ask it to "connect to OmniDimension" and the `omnidim-connect` skill walks it through. The [MCP docs](https://docs.omnidim.io/docs/mcp) have the steps for each client.
+The skills work through the OmniDimension MCP server. The Claude Code plugin adds it for you: run `/mcp` once to sign in. Anywhere else, ask your assistant to "connect to OmniDimension" and the `omnidim-connect` skill walks it through. The [MCP docs](https://docs.omnidim.io/docs/mcp) have the steps for each app.
 
 ## Skills
 
 In the order you usually need them:
 
-| Skill | Ask your agent | What it does |
+| Skill | Ask your assistant | What it does |
 |---|---|---|
-| [omnidim-connect](skills/omnidim-connect/SKILL.md) | "Connect to my OmniDimension account" | Sets up the hosted or local MCP server, read-only if you want |
-| [omnidim-build-agent](skills/omnidim-build-agent/SKILL.md) | "Build an agent that books dental appointments" | Configures the agent, gives it a number, tests it with a real call, rolls it back if needed |
-| [omnidim-run-campaign](skills/omnidim-run-campaign/SKILL.md) | "Call these 500 leads about the webinar" | Drafts the campaign, adds contacts, checks calling hours and concurrency, then starts it |
-| [omnidim-build-workflow](skills/omnidim-build-workflow/SKILL.md) | "After each call, send hot leads to Slack" | Builds, tests and publishes the automation |
-| [omnidim-audit-calls](skills/omnidim-audit-calls/SKILL.md) | "Why did yesterday's calls fail?" | Finds failed calls, reads transcripts, summarizes an agent or a campaign |
-| [omnidim-onboard-client](skills/omnidim-onboard-client/SKILL.md) | "Set up my new client and get them a number" | For resellers: creates and funds the client, runs its KYC where the region needs it, buys a number and attaches it |
+| [omnidim-connect](skills/omnidim-connect/SKILL.md) | "Connect to my OmniDimension account" | Connects your account, read-only if you want |
+| [omnidim-build-agent](skills/omnidim-build-agent/SKILL.md) | "Build an agent that books dental appointments" | Designs and builds the agent, gives it a number, tests it with a real call, and rolls a change back if it made things worse |
+| [omnidim-run-campaign](skills/omnidim-run-campaign/SKILL.md) | "Call these 500 leads about the webinar" | Drafts the campaign, adds contacts, checks calling hours and how many calls run at once, then starts it when you say go |
+| [omnidim-build-workflow](skills/omnidim-build-workflow/SKILL.md) | "After each call, send hot leads to Slack" | Builds, tests and turns on the automation |
+| [omnidim-audit-calls](skills/omnidim-audit-calls/SKILL.md) | "Why did yesterday's calls fail?" | Finds the failed calls, reads the transcripts, and sums up an agent or a campaign |
+| [omnidim-onboard-client](skills/omnidim-onboard-client/SKILL.md) | "Set up my new client and get them a number" | For resellers: creates and funds the client account, runs its KYC where the region needs it, and gets it a number |
 
-## Tips from real calls
+Your assistant asks before anything that costs money, calls real people or changes an agent that's already live.
 
-[What the best agents do](guides/guide/call-tips.md), from answered calls of 200 agents in 86 accounts. The biggest one, for outbound calls: open with a name check of 8 words or fewer, like "Hi, am I speaking with [name]?". The median agent with a greeting that short lost 31% of its answered calls in the first 15 seconds, against 46 to 49% for greetings of 16 words or more.
+## A tip from real calls
 
-## What is in this repo
+For outbound calls, open with a name check of 8 words or fewer, like "Hi, am I speaking with [name]?". Then say who you are and why on the next turn. On the agents we measured, people hung up in the first 15 seconds far less often after a greeting that short. The [call tips guide](guides/guide/call-tips.md) has the numbers and a few more tips.
+
+## What's in this repo
 
 ```
-skills/<skill>/SKILL.md       when to use the skill, and which playbook to read
+skills/<skill>/SKILL.md       when to use the skill, and which playbook to follow
 skills/<skill>/<playbook>.md  the steps for one task
-guides/<kind>/<name>.md       the omnidim://<kind>/<name> guides the playbooks link to
-.claude-plugin/               the Claude plugin manifest and icon
-.mcp.json                     the hosted MCP server the plugin connects
-plugin.json, mcp.json         the ChatGPT plugin manifest, listing and review test cases
-assets/logo.png               the ChatGPT plugin icon
+guides/                       short guides the playbooks link to: prompts, voices, numbers, campaigns, workflows
 ```
 
-To submit a new ChatGPT plugin version, build its ZIP and upload it at [platform.openai.com/plugins](https://platform.openai.com/plugins):
+## Contributing
 
-```
-git ls-files plugin.json mcp.json skills assets ':!skills/omnidim-run-campaign' | zip omnidim-chatgpt.zip -@
-```
-
-The ChatGPT ZIP leaves out `omnidim-run-campaign`, because the OpenAI portal flags outbound call campaigns against its usage policies. The campaign tools stay on the server.
-
-A change to the MCP server needs no new ZIP. ChatGPT rescans the server every day.
-
-## Change a skill here
-
-This repo is the one place the playbooks and guides are written. The [OmniDimension MCP server](https://github.com/Omnidim/omnidim-mcp-cloud) serves the same files to every connected AI app through `readGuide`, its prompts and its resources.
-
-1. Edit the markdown in a pull request. Use a `feat:` or `fix:` title so the plugin version goes up and installed plugins update.
-2. The `check-against-server` check runs the server's playbook tests on your change: every playbook is still served, every tool it names exists, and every rule the tests pin still holds.
-3. After the merge, the server picks the change up in its next morning's sync pull request and ships it with its next release.
-
-To add a playbook, add `skills/<skill>/<name-with-dashes>.md`: a header with its `name` and the `arguments` an MCP prompt picker asks for (copy an existing playbook), then `# <one-line title>`, then the steps. Link it from the skill's `SKILL.md`. The server serves it as soon as it syncs.
+Found a step that's wrong or out of date? Open an issue or a pull request. Every change is checked against the OmniDimension MCP server before it merges.
 
 ## License
 
