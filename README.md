@@ -1,5 +1,9 @@
 # OmniDimension skills
 
+[![Release](https://img.shields.io/github/v/release/Omnidim/skills)](https://github.com/Omnidim/skills/releases)
+[![License: Apache 2.0](https://img.shields.io/badge/license-Apache_2.0-blue)](./LICENSE)
+[![Checked against the MCP server](https://github.com/Omnidim/skills/actions/workflows/check-against-server.yml/badge.svg)](https://github.com/Omnidim/skills/actions/workflows/check-against-server.yml)
+
 These skills teach your AI assistant to build phone agents on [OmniDimension](https://omnidim.io). You describe the agent you want, and your assistant designs the call with you, sets up the voice and the number, and rings your phone so you can hear the agent before anyone else does.
 
 Say you run a dental clinic. You tell Claude "build an agent that answers our phone and books cleanings". It asks you a few questions, shows you the call plan, connects your calendar, and calls you to test it. If something sounds off on that call, you tell it what to change.
@@ -29,7 +33,12 @@ npx skills add Omnidim/skills --skill '*' -g -y
 
 **Any other assistant:** copy the folders in [`skills/`](skills) into its skills folder.
 
-The skills work through the OmniDimension MCP server. The Claude Code plugin adds it for you: run `/mcp` once to sign in. Anywhere else, ask your assistant to "connect to OmniDimension" and the `omnidim-connect` skill walks it through. The [MCP docs](https://docs.omnidim.io/docs/mcp) have the steps for each app.
+The skills work through the [OmniDimension MCP server](https://github.com/Omnidim/omnidim-mcp-server) at `https://mcp.omnidim.io/mcp`. You sign in with your OmniDimension account in the browser, so you need no API key. The Claude Code plugin adds the server for you: run `/mcp` once to sign in. In Cursor or VS Code, one click adds it:
+
+[![Install in Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en/install-mcp?name=omnidim&config=eyJ1cmwiOiJodHRwczovL21jcC5vbW5pZGltLmlvL21jcCJ9)
+[![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_omnidim-0098FF?logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=omnidim&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.omnidim.io%2Fmcp%22%7D)
+
+Anywhere else, ask your assistant to "connect to OmniDimension" and the `omnidim-connect` skill walks it through. The [MCP docs](https://docs.omnidim.io/docs/mcp) have the steps for each app.
 
 ## Skills
 
