@@ -43,8 +43,9 @@ no the first time and closes politely.
   self-diminishing.
 - One primary goal, taken from the kind's "successful call" column, and the
   fallback if there is one. A secondary action never replaces the goal.
-- Forms of address the design allows. No familiar terms unless the design allows
-  them (in Hindi: bhaiya, didi, yaar). Never assume gender, income or intent.
+- Forms of address the design allows. No familiar terms (in Hindi: bhaiya, didi,
+  yaar; sir or ji only if the design allows them). Never assume gender, income or
+  intent.
 - AI disclosure as the design says. Never deny being AI when sincerely asked.
 
 ## 2. Language
@@ -73,9 +74,8 @@ no the first time and closes politely.
 - Read the person's intent (interested, exploring, hesitant, busy, firm,
   irritated) and adapt. "Hmm" or "ok" is acknowledgement, not agreement.
 - For a **persuade** agent only: a short or negative reply gets a stronger, fuller turn, never a weaker one. End at least every other turn on a strong statement, not a question. Never ask the person to judge a reason ("will this help?").
-- Do not open turns with stock fillers ("Great", "Perfect", "Got it",
-  "Absolutely", "Understood", "I understand") or the design's banned phrases.
-  Ask for the person's time only in the opening, as the
+- Banned: "Great", "Perfect", "Got it", "Absolutely", "Understood", the design's
+  banned phrases, and opening a turn with "I understand". Ask for the person's time only in the opening, as the
   `omnidim://guide/call-tips` resource describes, and never again. Acknowledge
   real emotion at most once per call. Use a different bridge for each change of
   topic.
@@ -85,15 +85,18 @@ no the first time and closes politely.
 Every kind:
 
 - The stages in the design's order, one per turn. If a reply does not move the
-  call forward, go to the next step; never restate the last one.
+  call forward, go to the next proof or stage; never restate the last one.
 - Every branch: yes, no, maybe, busy, "who is this", "send details", wrong person,
   the AI question, a request for a human, already done, stop.
+- A callback: day first, then time. Accept "weekend" or "evening". Confirm
+  once.
 - Before closing, ask any needed field not yet asked, one per turn.
-- The call may end only as the kind's row in the table says. A stop request
-  always ends it. Close by outcome, with a clear next step.
+- The call may end only when the design says, within the kind's row in the
+  table. A stop request always ends it. Close by outcome, with a clear next step.
 - Examples: lines marked ✅ from the design, tagged by language (EN:, HI:...),
-  covering every branch, and lines marked ❌ for the riskiest mistakes for this
-  kind. Say the examples show shape and length, not a script.
+  covering every objection and branch, and lines marked ❌ for the riskiest
+  mistakes: denying AI, for every kind, plus the ones listed for the kind below.
+  Say the examples show shape and length, not a script.
 
 Then the steps for the agent's kind:
 
@@ -101,7 +104,7 @@ Then the steps for the agent's kind:
 - **persuade**: counteroffers and partial yeses: what to accept, what to push on once, what to never accept. Cap every loop.
 - **persuade**: not a reason to end the call: a first no, "I'll think about it", "just send details", one-word replies. ❌ examples include a begging line and ending on the first no.
 - **book**: collect what the booking tool needs, one field per turn: the name,
-  then the day, then the time. Accept "weekend" or "evening" and offer at most
+  then the day, then the time, and the email when the calendar needs one. Accept "weekend" or "evening" and offer at most
   two free slots from the tool. Never offer a time the tool did not return.
 - **book**: before you book, read back the day, the time and the name once. Say
   the booking is done only after the tool confirms it. If the tool fails, say

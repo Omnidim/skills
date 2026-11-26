@@ -14,8 +14,8 @@ production, grouped by the language your callers speak. Use `listProviders`
 
 - Default: leave `model.model` out, and the agent gets the organization's
   default model. An organization can set its own default, so do not replace it
-  unless the user names a model. Without one, the platform default is
-  `gpt-4.1-mini`.
+  unless the user names a model. Without one, the platform default applies
+  (`gpt-4.1-mini` today).
 - Alternatives: any other `name` from `listProviders` with `type: "llm"`, which lists only the
   models your organization can use.
 
