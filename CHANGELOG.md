@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.22.0](https://github.com/Omnidim/skills/compare/v0.21.0...v0.22.0) (2026-11-26)
+
+
+### Added
+
+* add the ChatGPT plugin manifest, listing and review test cases ([#14](https://github.com/Omnidim/skills/issues/14)) ([8c39d2d](https://github.com/Omnidim/skills/commit/8c39d2d3c77150b71c22f1a63bb0c16fe8fc927c))
+* **agent-prompt:** give each agent a kind, so only sales and collections agents keep pushing after a no ([#18](https://github.com/Omnidim/skills/issues/18)) ([c3ec70e](https://github.com/Omnidim/skills/commit/c3ec70e081590e20fb6e3277af985989cadd92ed))
+* name the merged workflow tools (workflow, workflowActions) ([e3a99b1](https://github.com/Omnidim/skills/commit/e3a99b1e961c5f2aee5e4e04b20846b41976c4dd))
+* name the merged workflow tools (workflow, workflowActions) ([bfb745f](https://github.com/Omnidim/skills/commit/bfb745f6786ddc00abbae2ea1e7fee9bcb1b77b1))
+
+
+### Fixed
+
+* describe outbound calls in the ChatGPT listing as calls to the customer's own lists ([#16](https://github.com/Omnidim/skills/issues/16)) ([f1211d0](https://github.com/Omnidim/skills/commit/f1211d0d053d66790c10c213ae86dc637e4fc9a2))
+* leave the campaign skill out of the ChatGPT ZIP and match the agent test case to real behavior ([#15](https://github.com/Omnidim/skills/issues/15)) ([04cffbc](https://github.com/Omnidim/skills/commit/04cffbc7dbc9137625e805e6dd127a35d468ea48))
+* name each workflow tool on its own in the workflow playbook and guide ([#17](https://github.com/Omnidim/skills/issues/17)) ([2994fd7](https://github.com/Omnidim/skills/commit/2994fd7dca50302af3c5861af6d964d76cfc11fe))
+* point the skills at the MCP setup docs instead of the omnidim-connect skill ([#11](https://github.com/Omnidim/skills/issues/11)) ([ce71fca](https://github.com/Omnidim/skills/commit/ce71fca4a2c87730bb852eeec8fa219c076d668e))
+
 ## [0.21.0](https://github.com/Omnidim/skills/compare/v0.20.0...v0.21.0) (2026-11-24)
 
 
