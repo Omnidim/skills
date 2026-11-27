@@ -31,3 +31,5 @@ Find why calls fail here, from the account's own data:
    - They work: the cause is this one number. Hand it to staff with the number id, the last good call id and the first bad call id, unless steps 2 to 4 already found it.
    - No other number on that carrier: say so and hand it over the same way.
 7. Answer with the cause in plain words, the call ids that prove it, and the fix as steps the user can take. Find the exact dashboard steps with `searchDocs`. End with one test: one call to or from the number, then a new row in `listCallLogs`.
+
+Handing over: where a step says to hand it to staff or pass it on, open a case with `createSupportCase` (or add to the open one with `addCaseMessage`) holding those ids, if those tools are available; otherwise tell the user to contact support with the same ids.

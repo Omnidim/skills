@@ -18,3 +18,5 @@ Find the state of the number and its verification:
 4. If KYC is stuck or rejected, a name mismatch is the usual cause. Ask the user to type their name exactly as it is on the ID they used, letter by letter. Don't ask for the document or open one: the typed name is all staff need to compare.
 5. If the account is new (its first number, or no calls yet in `listCallLogs`), mark the case urgent: the user can't start until this is done.
 6. Hand it to staff with the number id, `carrier_label`, the KYC state the user saw, and the name as typed. Tell the user what you passed on and that staff finish the verification. Don't promise a time unless a doc found with `searchDocs` states one.
+
+Handing over: where a step says to hand it to staff or pass it on, open a case with `createSupportCase` (or add to the open one with `addCaseMessage`) holding those ids, if those tools are available; otherwise tell the user to contact support with the same ids.

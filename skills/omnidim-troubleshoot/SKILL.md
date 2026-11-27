@@ -18,6 +18,6 @@ Read the playbook for the task and follow its steps in order. Fill each placehol
 | Balance, charges, plan, GST, auto-renew or a released number | [billing.md](billing.md) | `billing` |
 | A number isn't active or its KYC is stuck or rejected | [numbers-kyc.md](numbers-kyc.md) | `numbers_kyc` |
 | WhatsApp messages fail, templates are missing or rejected, or replies don't reach the agent | [whatsapp.md](whatsapp.md) | `whatsapp` |
-| A dashboard screen, feature or setting looks wrong or is missing | [white-label-ui.md](white-label-ui.md) | `white_label_ui` |
+| A dashboard screen, feature or setting looks wrong or is missing | [dashboard-ui.md](dashboard-ui.md) | `dashboard_ui` |
 | A referral reward is pending, withheld or missing | [referrals.md](referrals.md) | `referrals` |
 | The user asks for a feature: what works today and the closest documented way | [feature-request.md](feature-request.md) | `feature_request` |

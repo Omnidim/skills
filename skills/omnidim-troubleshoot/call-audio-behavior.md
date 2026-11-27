@@ -29,3 +29,5 @@ Find why calls sound or behave like this:
    - The user changed a setting but callers don't hear it: the agent is published and the change is only in the draft.
 5. If no setting explains it, compare the good call with the bad call field by field, following the [troubleshoot.md](troubleshoot.md) playbook from its step 4.
 6. Answer with the cause, the call id (and the good call id when you compared), the setting with its current value, and the value to set. If the settings are right and the call still went wrong, it is the platform's: hand it to staff with both call ids and the turn where it went wrong. End with one test call.
+
+Handing over: where a step says to hand it to staff or pass it on, open a case with `createSupportCase` (or add to the open one with `addCaseMessage`) holding those ids, if those tools are available; otherwise tell the user to contact support with the same ids.

@@ -17,4 +17,4 @@ Answer this request with what works today:
 3. If the product already does it, it is not a request: give the steps from the doc, with its link.
 4. If it doesn't, say so plainly, then give the closest documented way to reach the goal, as numbered steps the user can take (for example an after-call webhook to their own system, a workflow, or an API call). Every step comes from a doc page or a tool result: link the page.
 5. If there is no workaround, say that too. Never answer only "noted", and never promise the feature or a date.
-6. Pass the request on with the goal in the user's words and the workaround you gave.
+6. Pass the request on with the goal in the user's words and the workaround you gave: open a case with `createSupportCase` if that tool is available; otherwise tell the user how to send the request to support.

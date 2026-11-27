@@ -20,7 +20,7 @@ Find why this fails on WhatsApp:
    - `capabilities` says what the number can send. A send it doesn't list fails.
 3. Templates: read them with `listWhatsappTemplates` { "number_id": <id> }.
    - `status` rejected: give the user the `rejected_reason`. They fix the template in Meta and submit it again.
-   - Missing or still pending though Meta shows it approved: the list is as last synced. The user syncs the templates (`syncWhatsappTemplates`, with the user's go-ahead), then you read the list again.
+   - Missing or still pending though Meta shows it approved: the list is as last synced. Sync the templates with `syncWhatsappTemplates` if that tool is available and the user says go ahead (otherwise the user syncs them in the dashboard), then read the list again.
 4. Failed messages: find the conversation with `listWhatsappConversations`, then read it with `listWhatsappMessages` { "conversation_id": "<id>" }. A failed message carries `failure` with `code` and `reason`.
    - A Meta permission error: the user's Meta Business Manager hasn't given this number or app the permission. They fix it there.
    - The recipient opted out: check `listWhatsappOptOuts` { "number_id": <id> }. Sends to them stay blocked until the opt-out is lifted.
