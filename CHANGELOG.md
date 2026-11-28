@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.23.0](https://github.com/Omnidim/skills/compare/v0.22.0...v0.23.0) (2026-11-28)
+
+
+### Added
+
+* add troubleshoot playbooks for calls, audio, billing, numbers, WhatsApp, dashboard, referrals and feature requests ([b443a3b](https://github.com/Omnidim/skills/commit/b443a3be5f17681a5bae034f525105c9397ba95a))
+* troubleshoot reads a call step by step with getCallEvents ([67af2e8](https://github.com/Omnidim/skills/commit/67af2e8b2555e052113027b8cf6101574d10a3e3))
+* troubleshoot reads a call step by step with getCallEvents ([d03c522](https://github.com/Omnidim/skills/commit/d03c52286fdc86c174c16acc8da80f73776a74e7))
+* troubleshoot says what no tool can show instead of guessing ([c6adf34](https://github.com/Omnidim/skills/commit/c6adf3422b7a0e640688eefcbabdabb8b1aa6b67))
+* troubleshoot skill finds what changed and proves it with call ids ([be0a2ec](https://github.com/Omnidim/skills/commit/be0a2ec90f56f10eb716f38482be263c860b3810))
+* troubleshoot skill finds what changed and proves the cause with call ids ([8325f2c](https://github.com/Omnidim/skills/commit/8325f2ccd3bddb71ea6be137b614be1992b12b49))
+
+
+### Fixed
+
+* **build-agent:** new agents start at interruption_min_words 3 with advanced noise reduction ([49bd761](https://github.com/Omnidim/skills/commit/49bd761b9ecc1f3a1299d2da9c5d8536623f7541))
+* **build-agent:** new agents start at interruption_min_words 3 with advanced noise reduction ([7ccd0fe](https://github.com/Omnidim/skills/commit/7ccd0feac007b68a3e8dd57ec10eb07a25de1317))
+* troubleshoot playbooks name a real hand-off and keep the dashboard playbook brand-neutral ([4a11afb](https://github.com/Omnidim/skills/commit/4a11afb0e96821d9c9070e08f6dcaa9efe48786e))
+
 ## [0.22.0](https://github.com/Omnidim/skills/compare/v0.21.0...v0.22.0) (2026-11-26)
 
 

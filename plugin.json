@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "omnidim",
-  "version": "0.22.0",
+  "version": "0.23.0",
   "description": "Build, test and update voice AI phone agents, place calls, call your own customer lists, review call logs, and automate workflows and WhatsApp in your OmniDimension account.",
   "author": {
     "name": "OmniDimension",
